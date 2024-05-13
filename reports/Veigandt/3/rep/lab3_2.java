@@ -262,39 +262,39 @@ class Disk {
     }
 }
 
-public class Zad2 {
-        public static void main(String[] args) {
-            Disk disk = new Disk(1440);
+public class Main {
+    public static void main(String[] args) {
+        Disk disk = new Disk(1440);
 
-            try (BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\Вадим\\IdeaProjects\\untitled2\\out\\input.txt"))) {
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    String[] tokens = line.split("\\s+");
+        try (BufferedReader reader = new BufferedReader(new FileReader("C:\\Work\\Labs\\3 course 2 sem\\SPP\\lab3\\lab3_2\\out\\input.txt"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] tokens = line.split("\\s+");
 
-                    switch (tokens[0]) {
-                        case "ADD_FILE":
-                            File file = new File(tokens[1], tokens[2], Integer.parseInt(tokens[3]));
-                            disk.addFile(file, tokens[4]);
-                            break;
+                switch (tokens[0]) {
+                    case "ADD_FILE":
+                        File file = new File(tokens[1], tokens[2], Integer.parseInt(tokens[3]));
+                        disk.addFile(file, tokens[4]);
+                        break;
 
-                        case "ADD_DIRECTORY":
-                            Directory directory = new Directory(tokens[1]);
-                            disk.addDirectory(directory, tokens[2]);
-                            break;
+                    case "ADD_DIRECTORY":
+                        Directory directory = new Directory(tokens[1]);
+                        disk.addDirectory(directory, tokens[2]);
+                        break;
 
-                        case "REMOVE_FILE":
-                            disk.removeFile(tokens[1], tokens[2]);
-                            break;
+                    case "REMOVE_FILE":
+                        disk.removeFile(tokens[1], tokens[2]);
+                        break;
 
-                        case "REMOVE_DIRECTORY":
-                            disk.removeDirectory(tokens[1], tokens[2]);
-                            break;
-                    }
+                    case "REMOVE_DIRECTORY":
+                        disk.removeDirectory(tokens[1], tokens[2]);
+                        break;
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
             }
-
-            disk.printDiskStatus();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
+        disk.printDiskStatus();
     }
+}
